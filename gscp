@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Status: "
+git status
+
+#Message
+echo -n "Enter the commit message: "
+read text 
+#echo "Your commit message is: $text"
+
+#Add all files
+git add .
+
+#Commit files with message
+git commit -m "$text"
+
+#Push 
+while :
+do
+echo -n "Push Code? (Y/N): "
+read text
+#echo "You chose: $text"
+
+if [ "$text" = "y" ] || [ "$text" = "Y" ]; then
+	#echo "You said yes."
+	git push
+	echo "Your code has been pushed."
+	exit
+elif [ "$text" = "n" ] || [ "$text" = "N" ]; then
+	echo "You said no, you code has not been pushed"
+	exit
+else
+	echo "Invalid input. Try again!"
+fi
+done
